@@ -39,6 +39,7 @@ if __name__ == '__main__':
     list.appendNode(1)
     list.appendNode(2)
     list.appendNode(3)
-    list.printList
+    list.printList()
+
 
 
