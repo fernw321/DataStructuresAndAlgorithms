@@ -1,6 +1,5 @@
 class LinkedList {
-    
-        Node head;  
+    Node head;  
 
         // Empty Constructor
         LinkedList() {
@@ -16,13 +15,11 @@ class LinkedList {
 
             // Empty constructor
             Node() {
-
             }
 
             Node(int data) {
                 this.data = data;
             }
-
 
         }
         
@@ -43,7 +40,7 @@ class LinkedList {
         // Deletes a node with the matching value
         public void deleteNode(int value) {
             if (head == null) return;
-            Node curr = head;
+            Node curr = this.head;
             if (curr.data == value) {
                 this.head = this.head.next;
             } else {
@@ -65,6 +62,7 @@ class LinkedList {
                 System.out.print(curr.data + " ");
                 curr = curr.next;
             }
+            System.out.println();
         }
 
 
@@ -77,6 +75,8 @@ class LinkedList {
         list.appendNode(node2);
         list.appendNode(node3);
 
+        list.printLinkedList();
+        list.deleteNode(2);
         list.printLinkedList();
     }
     
