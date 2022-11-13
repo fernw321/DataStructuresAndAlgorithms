@@ -37,7 +37,7 @@ public class HashTable<K, V> {
         }
     }
 
-    // Return current size of ?
+    // Return current size of ? 
     public int size() { return size; }
 
     // Returns wether or not the HashTable is empty
@@ -46,6 +46,17 @@ public class HashTable<K, V> {
     // We use the hashing function found in the Objects library for our keys
     private final int hashCode(K key) {
         return Objects.hashCode(key);
+    }
+    
+    // Retrieves the index of the head node in the HashTable array
+    private int getHeadNodeIndex(K key) {
+        int hashCode = hashCode(key);
+        // Maps the index using the following equation
+        int index = hashCode%numNodes;
+
+        // Handle case where the index may be negative
+        index = index < 0 ? index*-1 : index;
+        return index;
     }
 
 
