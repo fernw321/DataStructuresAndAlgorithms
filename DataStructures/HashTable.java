@@ -59,8 +59,52 @@ public class HashTable<K, V> {
         return index;
     }
 
+    // Method to remove a given key
+    public V remove(K key) {
+        // Retrieve index of the headnode that contains key
+        int index = getHeadNodeIndex(key);
+        int hashCode = hashCode(key);
+        // Head node of the singly linked node list
+        HashNode<K, V> head = array.get(index);
+        // Keep track of the previous node
+        HashNode<K, V> prev = null;
+        while (head != null) {
+            if (head.key.equals(key) && hashCode == head.hashCode) {
+                break;
+            } else {
+                prev = head;
+                head = head.next;
+            }
+        }
+
+        // If a matching key was not found
+        if (head == null) {
+            return null;
+        }
+
+        // Reduce size of the HashTable
+        size--;
+
+        // Remove the matching node with the key
+        // If prev is null, that means the head node is the match
+        if (prev != null) {
+            prev.next = head.next;
+        } else {
+            array.set(index, head.next);
+        }
+
+        return head.value;
 
 
+    }
+
+
+
+
+    // Start of code execution
+    public static void main(String[] args) {
+        
+    }
 
 
 }
