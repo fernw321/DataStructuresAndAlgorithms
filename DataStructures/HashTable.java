@@ -96,7 +96,27 @@ public class HashTable<K, V> {
         return head.value;
 
 
+    } // End remove method
+
+
+    // Returns value from a key
+    public V get(K key) {
+        // Retrieve the index of the array that contains the key
+        int index = getHeadNodeIndex(key);
+        int hashCode = hashCode(key);
+        // Runner node
+        HashNode<K, V> head = array.get(index);
+        // Traverse the node list
+        while (head != null) {
+            if (head.key.equals(key) && hashCode == head.hashCode) {
+                return head.value;
+            }
+            head = head.next;
+        }
+        return null;
     }
+
+
 
 
 
