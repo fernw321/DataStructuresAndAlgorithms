@@ -142,15 +142,27 @@ public class HashTable<K, V> {
         array.set(index, newNode);
 
         // Handling load factor: if threshold exceeded, double the HashTable size
-        
+        if ((1.0 * size) / numNodes >= 0.7) {
+            // Copy over the original 
+            ArrayList<HashNode<K, V>> temp = array;
+            // Empty the original array
+            array = new ArrayList<>();
+            // Double the number of head nodes
+            numNodes *= 2;
+            // Reset the size
+            size = 0;
+            for (int i = 0; i < numNodes; i++) {
+                array.add(null);
+            }
+            // Add all nodes from temp array to new array
+            for (HashNode<K, V> headNode : temp) {
+                while (headNode != null) {
+                    add(headNode.key, headNode.value);
+                    headNode = headNode.next;
+                }
+            }
 
-
-
-
-
-
-
-
+        }
 
     }
 
