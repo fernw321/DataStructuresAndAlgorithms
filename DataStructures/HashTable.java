@@ -114,7 +114,47 @@ public class HashTable<K, V> {
             head = head.next;
         }
         return null;
+    } // end get method
+
+    public void add(K key, V value) {
+        // Retrieve the index in the array 
+        int index = getHeadNodeIndex(key);
+        int hashCode = hashCode(key);
+
+        // Retrieve the head node of given index
+        HashNode<K, V> head = array.get(index);
+        
+        while (head != null) {
+            // Update the value if the key already exists
+            if (head.key.equals(key) && head.hashCode == hashCode) {
+                head.value = value;
+            }
+            head = head.next;
+        }
+
+        // Insert the key at the beginning of the chain
+        size++;
+        head = array.get(index);
+        // Construct the new node
+        HashNode<K, V> newNode = new HashNode<K, V>(key, value, hashCode);
+        // Set the new chain 
+        newNode.next = head;
+        array.set(index, newNode);
+
+        // Handling load factor: if threshold exceeded, double the HashTable size
+        
+
+
+
+
+
+
+
+
+
     }
+
+
 
 
 
