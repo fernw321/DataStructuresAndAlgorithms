@@ -164,6 +164,20 @@ public class HashTable<K, V> {
 
         }
 
+    } // end add method
+
+
+    // print the all the table indices and all accompnaying nodes
+    public void printTable() {
+        for (int i = 0; i < numNodes; i++) {
+            System.out.print("Index " + i + " : ");
+            HashNode<K, V> headNode = array.get(i);
+            while (headNode != null) {
+                System.out.print(headNode.value + " ");
+                headNode = headNode.next;
+            }
+            System.out.println();
+        }
     }
 
 
@@ -175,6 +189,13 @@ public class HashTable<K, V> {
 
     // Start of code execution
     public static void main(String[] args) {
+        HashTable<Integer, Integer> table = new HashTable<>();
+        table.add(1, -1);
+        table.add(2, -2);
+        table.add(3, -3);
+        table.add(4, -4);
+        table.add(15, -15);
+        table.printTable();
         
     }
 
