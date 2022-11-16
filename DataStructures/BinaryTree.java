@@ -17,12 +17,30 @@ class Node {
     }
 
     // In-order traversal
-    public void inOrder(Node root) {
+    public static void inOrder(Node root) {
         if (root == null) return;
 
         inOrder(root.left);
         visitNode(root);
         inOrder(root.right);
+    }
+
+    // Pre-order traversal
+    public static void preOrder(Node root) {
+        if (root == null) return;
+
+        visitNode(root);
+        preOrder(root.left);
+        preOrder(root.right);
+    }
+
+    // Post-order traversal
+    public static void postOrder(Node root) {
+        if (root == null) return;
+
+        postOrder(root.left);
+        postOrder(root.right);
+        visitNode(root);
     }
 
     // Print the value of the node
@@ -32,7 +50,11 @@ class Node {
 
 
     public static void main(String[] args) {
-        
+        Node root = new Node(5);
+        root.left = new Node(4);
+        root.right = new Node(6);
+
+        postOrder(root);
 
     }
 }
